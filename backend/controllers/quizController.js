@@ -1,6 +1,6 @@
 const Quiz = require('../models/Quiz');
 const Note = require('../models/Note');
-const User = require('../models/User');
+const User = require('../models/user');
 const StudyProgress = require('../models/StudyProgress');
 const { generateQuiz } = require('../utils/aiHelpers');
 // @desc    Generate quiz from note

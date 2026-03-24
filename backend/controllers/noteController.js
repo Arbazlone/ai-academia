@@ -1,5 +1,5 @@
 const Note = require('../models/Note');
-const User = require('../models/User');
+const User = require('../models/user');
 
 const { cloudinary } = require('../config/cloudinary');
 
