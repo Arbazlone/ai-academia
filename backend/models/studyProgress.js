@@ -48,4 +48,4 @@ const StudyProgressSchema = new mongoose.Schema({
     }]
 });
 
-module.exports = mongoose.model('StudyProgress', StudyProgressSchema);
+module.exports = mongoose.models.StudyProgress || mongoose.model('StudyProgress', StudyProgressSchema);
