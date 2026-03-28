@@ -13,7 +13,7 @@ const app = express();
 // MIDDLEWARE
 app.use(cors({
   origin: [
-    'https://ai-academia.vercel.app',
+    'https://aiacademia-cyan.vercel.app',
     'http://localhost:3000',
     'http://localhost:5000'
   ],
