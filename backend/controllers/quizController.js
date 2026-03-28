@@ -1,7 +1,7 @@
 const Quiz = require('../models/quiz');
 const Note = require('../models/note');
 const User = require('../models/user');
-const StudyProgress = require('../models/StudyProgress');
+const StudyProgress = require('../models/studyProgress');
 const { generateQuiz } = require('../utils/aiHelpers');
 // @desc    Generate quiz from note
 // @route   POST /api/quiz/generate/:noteId
