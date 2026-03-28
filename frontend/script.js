@@ -1,7 +1,7 @@
 // ========== script.js ==========
 // AI Academic Brain - Frontend with MongoDB + JWT integration
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://ai-academia-backend-0ei3.onrender.com/api";
 
 let currentUser = null;
 
