@@ -1,7 +1,7 @@
 const User = require('../routes/user');
-const Note = require('../models/Note');
-const Quiz = require('../models/Quiz');
-const StudyProgress = require('../models/StudyProgress');
+const Note = require('../models/note');
+const Quiz = require('../models/quiz');
+const StudyProgress = require('../models/studyProgress');
 
 // @desc    Get user profile
 // @route   GET /api/user/profile

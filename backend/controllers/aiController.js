@@ -1,4 +1,4 @@
-const Note = require('../models/Note');
+const Note = require('../models/note');
 const { chatWithAI, generateStudyPlan } = require('../utils/aiHelpers');
 
 // @desc    Chat with AI about studies
