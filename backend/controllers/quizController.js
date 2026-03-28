@@ -1,5 +1,5 @@
-const Quiz = require('../models/Quiz');
-const Note = require('../models/Note');
+const Quiz = require('../models/quiz');
+const Note = require('../models/note');
 const User = require('../models/user');
 const StudyProgress = require('../models/StudyProgress');
 const { generateQuiz } = require('../utils/aiHelpers');

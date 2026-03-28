@@ -3,281 +3,837 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Study Brain · Next‑Gen Learning</title>
+  <title>AI Academic Brain · Next-Gen Learning</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts: Poppins + Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Inter + Clash Display -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Swiper Slider CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
 
-  <div class="app-wrapper">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="logo">
+  <!-- STICKY NAVBAR -->
+  <header class="navbar" id="mainNav">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">
           <i class="fas fa-brain"></i>
-          <span>AI<span>Study</span></span>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">AI Academic</span>
+          <span class="logo-sub">Brain</span>
         </div>
       </div>
-      <nav class="sidebar-nav">
-        <a href="#home" class="nav-item active" data-section="home">
-          <i class="fas fa-home"></i>
-          <span>Home</span>
-        </a>
-        <a href="#dashboard" class="nav-item" data-section="dashboard">
-          <i class="fas fa-chart-line"></i>
-          <span>Dashboard</span>
-        </a>
-        <a href="#ai-tools" class="nav-item" data-section="ai-tools">
-          <i class="fas fa-robot"></i>
-          <span>AI Tools</span>
-        </a>
-        <a href="#about" class="nav-item" data-section="about">
-          <i class="fas fa-info-circle"></i>
-          <span>About</span>
-        </a>
-        <a href="#contact" class="nav-item" data-section="contact">
-          <i class="fas fa-envelope"></i>
-          <span>Contact</span>
-        </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#ai-tools" class="nav-link">AI Tools</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#developers" class="nav-link">Developers</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
       </nav>
-      <div class="sidebar-footer">
-        <div class="user-profile" id="userProfile">
-          <div class="avatar">
+      
+      <div class="nav-actions">
+        <div class="auth-buttons" id="authButtons">
+          <a href="login.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+          <a href="login.html#register" class="btn-register"><i class="fas fa-user-plus"></i> Register</a>
+        </div>
+        
+        <div class="user-status" id="userStatus" style="display: none;">
+          <div class="user-avatar">
             <i class="fas fa-user-circle"></i>
           </div>
-          <div class="user-info">
-            <span id="userNameDisplay">Guest</span>
-            <small id="userStatusBadge">Not logged in</small>
+          <span id="userName">User</span>
+          <button onclick="logout()" class="btn-logout" title="Logout">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+        
+        <a href="#contact" class="btn-start">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Start Learning</span>
+        </a>
+        
+        <button class="hamburger" id="hamburgerBtn" aria-label="menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION - REDESIGNED -->
+    <section id="home" class="hero">
+      <div class="hero-container">
+        <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+          <div class="hero-badge">
+            <span class="badge-pulse">✨ AI-Powered Learning</span>
           </div>
-          <div class="auth-actions" id="sidebarAuth">
-            <a href="login.html" class="btn-login-sm">Sign In</a>
-            <a href="login.html#register" class="btn-register-sm">Register</a>
+          <h1 class="hero-title">
+            Your Personal <br>
+            <span class="gradient-text">AI Study Brain</span>
+          </h1>
+          <p class="hero-description">
+            Transform your study materials into interactive knowledge. Upload notes, generate smart quizzes, visualize concepts, and learn 10x faster with advanced AI.
+          </p>
+          <div class="hero-cta">
+            <button class="btn-primary btn-large" id="uploadNotesBtn">
+              <i class="fas fa-cloud-upload-alt"></i>
+              Upload Notes
+              <span class="btn-glow"></span>
+            </button>
+            <a href="#features" class="btn-outline btn-large">
+              <i class="fas fa-robot"></i>
+              Explore AI Tools
+            </a>
           </div>
-          <div class="user-menu" id="userMenu" style="display: none;">
-            <button onclick="logout()" class="btn-logout-sm"><i class="fas fa-sign-out-alt"></i> Logout</button>
+          <div class="hero-stats-mini">
+            <div class="stat-mini-item">
+              <span class="stat-mini-value">10k+</span>
+              <span class="stat-mini-label">Active Students</span>
+            </div>
+            <div class="stat-mini-item">
+              <span class="stat-mini-value">50k+</span>
+              <span class="stat-mini-label">Notes Processed</span>
+            </div>
+            <div class="stat-mini-item">
+              <span class="stat-mini-value">100k+</span>
+              <span class="stat-mini-label">Quizzes</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
+          <div class="hero-card">
+            <div class="hero-card-glow"></div>
+            <div class="hero-card-content">
+              <div class="ai-brain-animation">
+                <div class="brain-circle"></div>
+                <div class="brain-circle"></div>
+                <div class="brain-circle"></div>
+                <i class="fas fa-brain brain-icon"></i>
+              </div>
+              <div class="floating-elements">
+                <div class="float-item note-item">
+                  <i class="fas fa-file-alt"></i>
+                  <span>PDF Summary</span>
+                </div>
+                <div class="float-item quiz-item">
+                  <i class="fas fa-question-circle"></i>
+                  <span>Quiz Ready</span>
+                </div>
+                <div class="float-item graph-item">
+                  <i class="fas fa-project-diagram"></i>
+                  <span>Knowledge Graph</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </aside>
+      
+      <div class="hero-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="currentColor" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
+    </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- Header with top bar -->
-      <header class="top-bar">
-        <div class="page-title" id="pageTitle">Home</div>
-        <div class="top-actions">
-          <button class="icon-btn" id="notificationsBtn"><i class="fas fa-bell"></i></button>
-          <div class="profile-dropdown" id="profileDropdown">
-            <div class="profile-trigger" id="profileTrigger">
-              <i class="fas fa-user-circle"></i>
-              <span id="profileName">Guest</span>
-              <i class="fas fa-chevron-down"></i>
+    <!-- STATS SECTION - REDESIGNED -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid-modern">
+          <div class="stat-card-modern" data-aos="zoom-in" data-aos-delay="100">
+            <div class="stat-icon">
+              <i class="fas fa-file-alt"></i>
             </div>
-            <div class="dropdown-menu" id="dropdownMenu">
-              <a href="#" id="profileLink"><i class="fas fa-user"></i> Profile</a>
-              <a href="#" id="settingsLink"><i class="fas fa-cog"></i> Settings</a>
-              <div class="divider"></div>
-              <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <div class="stat-content">
+              <span class="stat-number" id="notesProcessed">10,234</span>
+              <span class="stat-label">Notes Processed</span>
+            </div>
+          </div>
+          
+          <div class="stat-card-modern" data-aos="zoom-in" data-aos-delay="200">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number" id="totalStudents">2,567</span>
+              <span class="stat-label">Active Students</span>
+            </div>
+          </div>
+          
+          <div class="stat-card-modern" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stat-icon">
+              <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number" id="quizzesGenerated">35,123</span>
+              <span class="stat-label">Quizzes Generated</span>
+            </div>
+          </div>
+          
+          <div class="stat-card-modern" data-aos="zoom-in" data-aos-delay="400">
+            <div class="stat-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number" id="knowledgeMaps">1,245</span>
+              <span class="stat-label">Knowledge Maps</span>
             </div>
           </div>
         </div>
-      </header>
+      </div>
+    </section>
+    
 
-      <!-- Dynamic Content Sections -->
-      <div class="content-area">
-        <!-- Home Section -->
-        <section id="home" class="section active">
-          <div class="hero-card">
-            <div class="hero-badge">✨ AI-Powered Learning</div>
-            <h1 class="hero-title">Learn Smarter,<br><span class="gradient-text">Not Harder</span></h1>
-            <p class="hero-desc">Upload your study materials and let AI do the heavy lifting. Get instant summaries, generate quizzes, visualize concepts, and master any subject.</p>
-            <div class="hero-buttons">
-              <button class="btn-primary btn-glow" id="uploadNotesBtnHero"><i class="fas fa-cloud-upload-alt"></i> Upload Notes</button>
-              <button class="btn-outline" id="exploreToolsBtn"><i class="fas fa-robot"></i> Explore AI Tools</button>
-            </div>
-            <div class="stats-mini">
-              <div class="stat"><span class="stat-value" id="heroNotesProcessed">10k+</span><span>Notes Processed</span></div>
-              <div class="stat"><span class="stat-value" id="heroStudents">2.5k+</span><span>Active Students</span></div>
-              <div class="stat"><span class="stat-value" id="heroQuizzes">35k+</span><span>Quizzes</span></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="section">
-          <div class="dashboard-stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
-              <div class="stat-info"><span class="stat-number" id="notesProcessed">10,234</span><span>Notes Processed</span></div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-users"></i></div>
-              <div class="stat-info"><span class="stat-number" id="totalStudents">2,567</span><span>Active Students</span></div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-question-circle"></i></div>
-              <div class="stat-info"><span class="stat-number" id="quizzesGenerated">35,123</span><span>Quizzes Generated</span></div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
-              <div class="stat-info"><span class="stat-number" id="knowledgeMaps">1,245</span><span>Knowledge Maps</span></div>
-            </div>
-          </div>
-          <div class="recent-activity">
-            <h3>Recent Activity</h3>
-            <div class="activity-list" id="activityList">
-              <div class="activity-item"><i class="fas fa-file-upload"></i> You uploaded "AI_Notes.pdf" <span>2 hours ago</span></div>
-              <div class="activity-item"><i class="fas fa-question-circle"></i> Generated quiz "Machine Learning Basics" <span>Yesterday</span></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- AI Tools Section -->
-        <section id="ai-tools" class="section">
-          <div class="section-header">
-            <h2>AI-Powered <span class="gradient-text">Tools</span></h2>
-            <p>Supercharge your learning with our advanced AI suite.</p>
-          </div>
-          <div class="tools-grid">
-            <div class="tool-card">
-              <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
-              <h3>Notes Analyzer</h3>
+    <!-- AI TOOLS SECTION - REDESIGNED -->
+    <section id="ai-tools" class="tools-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-subtitle">AI-POWERED TOOLS</span>
+          <h2 class="section-title">Supercharge Your <span class="gradient-text">Learning Journey</span></h2>
+          <p class="section-description">From notes to mastery — our AI tools handle the heavy lifting so you can focus on understanding.</p>
+        </div>
+        
+        <div class="tools-grid-modern">
+          <!-- Tool Card 1 -->
+          <div class="tool-card-modern" data-aos="flip-up" data-aos-delay="100">
+            <div class="tool-card-inner">
+              <div class="tool-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <h3>AI Notes Analyzer</h3>
               <p>Upload PDFs and get instant summaries, key concepts, and study guides.</p>
-              <button class="tool-btn" onclick="openUploadModal()">Try Now <i class="fas fa-arrow-right"></i></button>
+              <button class="tool-action" onclick="openUploadModal()">
+                <span>Try Now</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <div class="tool-card-glow"></div>
             </div>
-            <div class="tool-card">
-              <div class="tool-icon"><i class="fas fa-project-diagram"></i></div>
+          </div>
+          
+          <!-- Tool Card 2 -->
+          <div class="tool-card-modern" data-aos="flip-up" data-aos-delay="200">
+            <div class="tool-card-inner">
+              <div class="tool-icon">
+                <i class="fas fa-project-diagram"></i>
+              </div>
               <h3>Knowledge Graph</h3>
-              <p>Visualize topic connections in interactive 3D maps.</p>
-              <button class="tool-btn" onclick="generateKnowledgeGraph()">Try Now <i class="fas fa-arrow-right"></i></button>
+              <p>Visualize how topics connect in beautiful, interactive 3D maps.</p>
+              <button class="tool-action" onclick="generateKnowledgeGraph()">
+                <span>Try Now</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <div class="tool-card-glow"></div>
             </div>
-            <div class="tool-card">
-              <div class="tool-icon"><i class="fas fa-question-circle"></i></div>
+          </div>
+          
+          <!-- Tool Card 3 -->
+          <div class="tool-card-modern" data-aos="flip-up" data-aos-delay="300">
+            <div class="tool-card-inner">
+              <div class="tool-icon">
+                <i class="fas fa-question-circle"></i>
+              </div>
               <h3>Quiz Generator</h3>
-              <p>Create exam‑ready questions from your notes with smart difficulty.</p>
-              <button class="tool-btn" onclick="generateQuiz()">Try Now <i class="fas fa-arrow-right"></i></button>
+              <p>Create exam-ready questions from your notes with smart difficulty levels.</p>
+              <button class="tool-action" onclick="generateQuiz()">
+                <span>Try Now</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <div class="tool-card-glow"></div>
             </div>
-            <div class="tool-card">
-              <div class="tool-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          </div>
+          
+          <!-- Tool Card 4 -->
+          <div class="tool-card-modern" data-aos="flip-up" data-aos-delay="400">
+            <div class="tool-card-inner">
+              <div class="tool-icon">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </div>
               <h3>AI Study Assistant</h3>
-              <p>24/7 personalized tutoring that adapts to your style.</p>
-              <button class="tool-btn" onclick="openChatModal()">Try Now <i class="fas fa-arrow-right"></i></button>
+              <p>24/7 personalized tutoring that adapts to your learning style.</p>
+              <button class="tool-action" onclick="openChatModal()">
+                <span>Try Now</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <div class="tool-card-glow"></div>
             </div>
-            <div class="tool-card">
-              <div class="tool-icon"><i class="fas fa-bolt"></i></div>
+          </div>
+          
+          <!-- Tool Card 5 -->
+          <div class="tool-card-modern" data-aos="flip-up" data-aos-delay="500">
+            <div class="tool-card-inner">
+              <div class="tool-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
               <h3>Smart Revision</h3>
-              <p>Generate flashcards and spaced repetition schedules.</p>
-              <button class="tool-btn" onclick="smartRevision()">Try Now <i class="fas fa-arrow-right"></i></button>
+              <p>Generate flashcards and spaced repetition schedules automatically.</p>
+              <button class="tool-action">
+                <span>Try Now</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <div class="tool-card-glow"></div>
             </div>
-            <div class="tool-card">
-              <div class="tool-icon"><i class="fas fa-calendar-check"></i></div>
+          </div>
+          
+          <!-- Tool Card 6 -->
+          <div class="tool-card-modern" data-aos="flip-up" data-aos-delay="600">
+            <div class="tool-card-inner">
+              <div class="tool-icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
               <h3>Study Planner</h3>
               <p>AI creates personalized study schedules based on your goals.</p>
-              <button class="tool-btn" onclick="studyPlanner()">Try Now <i class="fas fa-arrow-right"></i></button>
+              <button class="tool-action">
+                <span>Try Now</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <div class="tool-card-glow"></div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-          <div class="about-grid">
-            <div class="about-text">
-              <h2>About <span class="gradient-text">AI Study Brain</span></h2>
-              <p>We combine cutting-edge AI with educational science to create a personalized learning experience. Our platform adapts to your needs, helping you master any subject faster.</p>
-              <div class="features-list">
-                <div class="feature"><i class="fas fa-check-circle"></i> Smart Summarization</div>
-                <div class="feature"><i class="fas fa-check-circle"></i> Visual Learning Graphs</div>
-                <div class="feature"><i class="fas fa-check-circle"></i> Adaptive Quizzing</div>
-                <div class="feature"><i class="fas fa-check-circle"></i> Personalized Insights</div>
+    <!-- ABOUT SECTION - REDESIGNED -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-grid-modern">
+          <div class="about-content" data-aos="fade-right">
+            <span class="section-subtitle">WHY CHOOSE US</span>
+            <h2 class="section-title">The Future of <span class="gradient-text">Learning is Here</span></h2>
+            <p class="about-text">
+              AI Academic Brain combines cutting-edge artificial intelligence with educational science to create a learning experience that adapts to you.
+            </p>
+            
+            <div class="features-list">
+              <div class="feature-item">
+                <div class="feature-check">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="feature-info">
+                  <h4>Smart Summarization</h4>
+                  <p>AI extracts key concepts from any PDF or document</p>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-check">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="feature-info">
+                  <h4>Visual Learning</h4>
+                  <p>See connections between topics with interactive graphs</p>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-check">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="feature-info">
+                  <h4>Adaptive Quizzing</h4>
+                  <p>Questions adjust to your knowledge level</p>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-check">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="feature-info">
+                  <h4>Personalized Insights</h4>
+                  <p>Track progress and identify weak areas</p>
+                </div>
               </div>
             </div>
-            <div class="about-image">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Learning">
-            </div>
           </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-          <div class="contact-grid">
-            <div class="contact-info">
-              <h2>Get in <span class="gradient-text">Touch</span></h2>
-              <p>Have questions? We'd love to hear from you.</p>
-              <div class="contact-details">
-                <div><i class="fab fa-github"></i> <span>/arbazlone</span></div>
-                <div><i class="fab fa-linkedin"></i> <span>/company/arbazhassan</span></div>
-                <div><i class="fas fa-envelope"></i> <span>arbazhassan2005@gmail.com</span></div>
+          
+          <div class="about-visual" data-aos="fade-left">
+            <div class="about-card">
+              <div class="about-card-inner">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80" alt="Students learning" class="about-image">
+                <div class="about-card-overlay">
+                  <div class="overlay-content">
+                    <i class="fas fa-play-circle"></i>
+                    <span>See how it works</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="contact-form">
-              <form id="contactForm">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="text" placeholder="Subject">
-                <textarea rows="4" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
-              </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION - REDESIGNED -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-subtitle">POWERFUL FEATURES</span>
+          <h2 class="section-title">Everything You Need to <span class="gradient-text">Excel</span></h2>
+          <p class="section-description">Go beyond simple flashcards — experience true adaptive learning with our AI-powered platform.</p>
+        </div>
+        
+        <div class="features-grid-modern">
+          <!-- Feature Card 1 -->
+          <div class="feature-card-modern" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon-wrapper">
+              <div class="feature-icon">
+                <i class="fas fa-comment-dots"></i>
+              </div>
+            </div>
+            <h3>AI Chat Tutor</h3>
+            <p>Get instant answers to your questions, 24/7. Our AI understands your course material.</p>
+            <div class="feature-stats">
+              <span>98% satisfaction</span>
             </div>
           </div>
-        </section>
+          
+          <!-- Feature Card 2 -->
+          <div class="feature-card-modern" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon-wrapper">
+              <div class="feature-icon">
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <h3>Knowledge Graphs</h3>
+            <p>Visualize complex relationships between concepts in beautiful 3D.</p>
+            <div class="feature-stats">
+              <span>10k+ graphs created</span>
+            </div>
+          </div>
+          
+          <!-- Feature Card 3 -->
+          <div class="feature-card-modern" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon-wrapper">
+              <div class="feature-icon">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+            </div>
+            <h3>Smart Quiz System</h3>
+            <p>Quizzes that adapt to your knowledge and target your weak spots.</p>
+            <div class="feature-stats">
+              <span>35k+ quizzes taken</span>
+            </div>
+          </div>
+          
+          <!-- Feature Card 4 -->
+          <div class="feature-card-modern" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon-wrapper">
+              <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+            </div>
+            <h3>Real‑Time Analytics</h3>
+            <p>Track your progress, retention rate, and learning patterns.</p>
+            <div class="feature-stats">
+              <span>Detailed insights</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </main>
-  </div>
+    </section>
 
-  <!-- Modals (unchanged from previous but keep IDs) -->
-  <div id="chatModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2><i class="fas fa-robot"></i> AI Study Assistant</h2>
-        <span class="close" onclick="closeChatModal()">&times;</span>
+    <!-- DASHBOARD PREVIEW - NEW -->
+    <section class="dashboard-preview-section">
+      <div class="container">
+        <div class="dashboard-card" data-aos="zoom-in-up">
+          <div class="dashboard-header">
+            <h3>Your Learning Dashboard</h3>
+            <div class="dashboard-controls">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="dashboard-content">
+            <div class="dashboard-sidebar">
+              <div class="sidebar-item active">
+                <i class="fas fa-file-alt"></i>
+                <span>My Notes</span>
+              </div>
+              <div class="sidebar-item">
+                <i class="fas fa-project-diagram"></i>
+                <span>Knowledge Graph</span>
+              </div>
+              <div class="sidebar-item">
+                <i class="fas fa-question-circle"></i>
+                <span>Quizzes</span>
+              </div>
+              <div class="sidebar-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Progress</span>
+              </div>
+            </div>
+            <div class="dashboard-main">
+              <div class="stats-row">
+                <div class="stat-block">
+                  <span class="stat-value">12</span>
+                  <span class="stat-desc">Notes Uploaded</span>
+                </div>
+                <div class="stat-block">
+                  <span class="stat-value">45</span>
+                  <span class="stat-desc">Quizzes Taken</span>
+                </div>
+                <div class="stat-block">
+                  <span class="stat-value">87%</span>
+                  <span class="stat-desc">Avg Score</span>
+                </div>
+              </div>
+              <div class="graph-preview">
+                <div class="graph-bar" style="height: 60px;"></div>
+                <div class="graph-bar" style="height: 80px;"></div>
+                <div class="graph-bar" style="height: 45px;"></div>
+                <div class="graph-bar" style="height: 95px;"></div>
+                <div class="graph-bar" style="height: 70px;"></div>
+                <div class="graph-bar" style="height: 55px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="chat-container">
-        <div class="chat-messages" id="chatMessages"></div>
-        <div class="chat-input-area">
-          <input type="text" id="chatQuestion" placeholder="Ask anything..." onkeypress="if(event.key==='Enter') askQuestion()">
-          <button class="btn-send" onclick="askQuestion()"><i class="fas fa-paper-plane"></i></button>
+    </section>
+
+    <!-- DEVELOPERS SECTION - REDESIGNED -->
+    <section id="developers" class="developers-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-subtitle">THE TEAM</span>
+          <h2 class="section-title">Meet the <span class="gradient-text">Minds</span> Behind It</h2>
+          <p class="section-description">Passionate developers and AI researchers dedicated to transforming education.</p>
+        </div>
+        
+        <div class="developers-grid">
+          <!-- Developer 1 -->
+          <div class="developer-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="developer-image">
+              <img src="images/Picsart_25-09-21_18-37-59-900.jpg" alt="Arbaz Hassan">
+              <div class="developer-social">
+                <a href="https://github.com/arbazlone" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/arbazhassan" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/arbazhassan" target="_blank"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+            <div class="developer-info">
+              <h3>Arbaz Hassan</h3>
+              <p>AI & Lead Developer</p>
+              </p>Frontend & UI/UX Designer</p>
+            </div>
+          </div>
+          
+          <!-- Developer 2 -->
+          <div class="developer-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="developer-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1488&q=80" alt="Aisha Khan">
+              <div class="developer-social">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+            <div class="developer-info">
+              <h3>Aisha Khan</h3>
+              <p>Frontend & UI/UX</p>
+            </div>
+          </div>
+          
+          <!-- Developer 3 -->
+          <div class="developer-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="developer-image">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Jose Martinez">
+              <div class="developer-social">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+            <div class="developer-info">
+              <h3>Jose Martinez</h3>
+              <p>ML Engineer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION - REDESIGNED WITH SWIPER -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-subtitle">TESTIMONIALS</span>
+          <h2 class="section-title">What <span class="gradient-text">Students</span> Say</h2>
+          <p class="section-description">Join thousands of students who have transformed their learning experience.</p>
+        </div>
+        
+        <div class="swiper testimonial-swiper" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <!-- Testimonial 1 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card-modern">
+                <div class="testimonial-quote">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">"The quiz generator helped me revise faster before exams. I improved my grades from C to A in just one semester!"</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1494790108777-296ef5a1860d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Jane Doe">
+                  <div class="author-info">
+                    <h4>Jane Doe</h4>
+                    <p>Computer Science Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card-modern">
+                <div class="testimonial-quote">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">"The knowledge graph helped me connect topics easily. I finally understand how everything fits together!"</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Mike Chen">
+                  <div class="author-info">
+                    <h4>Mike Chen</h4>
+                    <p>Engineering Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card-modern">
+                <div class="testimonial-quote">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">"Uploading notes and generating summaries saved me hours of study time. Best AI tool for students!"</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1364&q=80" alt="Priya Kapoor">
+                  <div class="author-info">
+                    <h4>Priya Kapoor</h4>
+                    <p>Medical Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI CHAT MODAL - IMPROVED -->
+    <div id="chatModal" class="modal">
+      <div class="modal-content glass-effect">
+        <div class="modal-header">
+          <h2><i class="fas fa-robot"></i> AI Study Assistant</h2>
+          <span class="close" onclick="closeChatModal()">&times;</span>
+        </div>
+        <div class="chat-container">
+          <div class="chat-messages" id="chatMessages">
+            <div class="message ai-message">
+              <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div class="message-content">
+                <strong>AI Assistant</strong>
+                <p>Hello! I'm your AI study assistant. Ask me anything about your notes or studies!</p>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" id="chatQuestion" placeholder="Type your question here..." onkeypress="if(event.key==='Enter') askQuestion()">
+            <button class="btn-send" onclick="askQuestion()">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="uploadModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2><i class="fas fa-cloud-upload-alt"></i> Upload Notes</h2>
-        <span class="close" onclick="closeUploadModal()">&times;</span>
-      </div>
-      <div class="upload-area" id="dropZone">
-        <i class="fas fa-cloud-upload-alt"></i>
-        <h3>Drag & drop your PDF here</h3>
-        <p>or</p>
-        <input type="file" id="fileInput" accept=".pdf" style="display: none;">
-        <button onclick="document.getElementById('fileInput').click()" class="btn-primary">Browse Files</button>
-      </div>
-      <div id="uploadProgress" style="display: none;">
-        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-        <p id="progressText">Uploading...</p>
-      </div>
-      <div id="analysisResult" style="display: none;">
-        <h3>Analysis Result:</h3>
-        <div id="resultContent" class="result-content"></div>
+    <!-- PDF UPLOAD MODAL - IMPROVED -->
+    <div id="uploadModal" class="modal">
+      <div class="modal-content glass-effect">
+        <div class="modal-header">
+          <h2><i class="fas fa-cloud-upload-alt"></i> Upload Notes</h2>
+          <span class="close" onclick="closeUploadModal()">&times;</span>
+        </div>
+        <div class="upload-area" id="dropZone">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <h3>Drag & drop your PDF here</h3>
+          <p>or</p>
+          <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+          <button onclick="document.getElementById('fileInput').click()" class="btn-primary">
+            Browse Files
+          </button>
+        </div>
+        <div id="uploadProgress" style="display: none;">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p id="progressText">Uploading...</p>
+        </div>
+        <div id="analysisResult" style="display: none;">
+          <h3>Analysis Result:</h3>
+          <div id="resultContent" class="result-content"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="quizModal" class="modal">
-    <div class="modal-content" style="max-width: 800px;">
-      <div class="modal-header">
-        <h2><i class="fas fa-question-circle"></i> Generated Quiz</h2>
-        <span class="close" onclick="closeQuizModal()">&times;</span>
+    <!-- QUIZ MODAL - IMPROVED -->
+    <div id="quizModal" class="modal">
+      <div class="modal-content glass-effect" style="max-width: 800px;">
+        <div class="modal-header">
+          <h2><i class="fas fa-question-circle"></i> Generated Quiz</h2>
+          <span class="close" onclick="closeQuizModal()">&times;</span>
+        </div>
+        <div id="quizContainer" class="quiz-container"></div>
       </div>
-      <div id="quizContainer" class="quiz-container"></div>
     </div>
-  </div>
 
+    <!-- CONTACT SECTION - REDESIGNED -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-grid-modern">
+          <div class="contact-info" data-aos="fade-right">
+            <span class="section-subtitle">GET IN TOUCH</span>
+            <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+            <p class="contact-text">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            
+            <div class="contact-details-modern">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fab fa-github"></i>
+                </div>
+                <div class="contact-info-text">
+                  <h4>GitHub</h4>
+                  <p>/arbazlone</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fab fa-linkedin"></i>
+                </div>
+                <div class="contact-info-text">
+                  <h4>LinkedIn</h4>
+                  <p>/company/arbazhassan</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-info-text">
+                  <h4>Email</h4>
+                  <p>arbazhassan2005@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form-modern" data-aos="fade-left">
+            <form id="contactForm">
+              <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Subject">
+                <i class="fas fa-tag"></i>
+              </div>
+              <div class="form-group">
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <i class="fas fa-comment"></i>
+              </div>
+              <button type="submit" class="btn-primary btn-full">
+                Send Message
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER - REDESIGNED -->
+  <footer class="footer-modern">
+    <div class="container">
+      <div class="footer-grid-modern">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <i class="fas fa-brain"></i>
+            <span>AI Academic Brain</span>
+          </div>
+          <p class="footer-description">Revolutionizing education through artificial intelligence. Learn smarter, not harder.</p>
+          <div class="footer-social">
+            <a href="https://github.com/arbazlone" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/company/arbazhassan" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/arbaz_lone7" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#ai-tools">AI Tools</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>AI Tools</h4>
+          <ul>
+            <li><a href="#">Notes Analyzer</a></li>
+            <li><a href="#">Quiz Generator</a></li>
+            <li><a href="#">Knowledge Graph</a></li>
+            <li><a href="#">Study Planner</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p>Subscribe for updates and tips</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="arbazhassan2005@gmail.com">
+            <button><i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2026 AI Academic Brain. Built for Innovate 3.0 Project Competition. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
